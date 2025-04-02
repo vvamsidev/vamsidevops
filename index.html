@@ -3,75 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vamsi | DevOps & Cloud Engineer</title>
+    <title>Vamsi | Senior DevOps Engineer</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0d0d0d;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background: linear-gradient(90deg, #1a1a1a, #0f0f0f);
+            padding: 20px;
+            box-shadow: 0px 0px 15px #00ffcc;
+        }
+        h1 {
+            font-size: 3em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #00ffcc;
+        }
+        h2 {
+            font-size: 1.8em;
+            color: #ffffff;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #00ffcc;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ff6600;
+        }
+        .hero {
+            background: url('https://source.unsplash.com/1600x900/?technology,futuristic') no-repeat center center/cover;
+            padding: 100px 20px;
+        }
+        .section {
+            padding: 50px 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+        .project {
+            background: #1a1a1a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #00ffcc;
+        }
+        footer {
+            padding: 20px;
+            background: #0d0d0d;
+            margin-top: 30px;
+            box-shadow: 0px 0px 10px #00ffcc;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Vamsi</h1>
-        <p>AWS & DevOps Engineer | Cloud & MLOps Specialist</p>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <h1>Vamsi</h1>
+            <h2>Senior DevOps Engineer</h2>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Results-driven AWS & DevOps Engineer with 5+ years of experience in designing, deploying, and managing scalable cloud infrastructures. Passionate about optimizing workflows, reducing deployment time, and enhancing system reliability.</p>
+    <section id="about" class="hero">
+        <div class="container">
+            <h2>Welcome to my Portfolio</h2>
+            <p>DevOps, MLOps, AWS & Generative AI Specialist. Passionate about automation, scalability, and futuristic tech.</p>
+        </div>
     </section>
     
-    <section id="skills">
-        <h2>Core Skills</h2>
-        <ul>
-            <li>AWS (EC2, S3, RDS, Lambda, EKS, VPC, IAM)</li>
-            <li>Terraform, Ansible, AWS CDK</li>
-            <li>Docker, Kubernetes (EKS), Helm</li>
-            <li>Jenkins, GitHub Actions, GitLab CI/CD</li>
-            <li>ML Deployment: SageMaker, Kubeflow, MLflow</li>
-            <li>Monitoring: Prometheus, Grafana, CloudWatch</li>
-            <li>Security: IAM, KMS, AWS WAF</li>
-            <li>Python, Bash, Git</li>
-        </ul>
+    <section id="skills" class="section">
+        <div class="container">
+            <h2>Skills</h2>
+            <ul>
+                <li>AWS</li>
+                <li>DevOps</li>
+                <li>MLOps</li>
+                <li>Terraform</li>
+                <li>Docker</li>
+                <li>Kubernetes</li>
+                <li>Python</li>
+                <li>Generative AI</li>
+            </ul>
+        </div>
     </section>
     
-    <section id="experience">
-        <h2>Professional Experience</h2>
-        <h3>Senior DevOps Engineer | Sigmoid (2022 - Present)</h3>
-        <ul>
-            <li>Designed AWS infrastructure with Terraform, improving deployment speed by 60%.</li>
-            <li>Developed CI/CD pipelines reducing manual deployments by 90%.</li>
-            <li>Managed Kubernetes (EKS) clusters and automated deployments with Helm & ArgoCD.</li>
-        </ul>
-        <h3>Cloud Engineer | Capgemini (2019 - 2022)</h3>
-        <ul>
-            <li>Optimized AWS services for cost and performance in migration projects.</li>
-            <li>Configured IAM policies and security groups for enhanced cloud security.</li>
-        </ul>
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Automated CI/CD Pipeline</h3>
+                <p>Designed and implemented a fully automated CI/CD pipeline using Jenkins, Docker, and Kubernetes.</p>
+            </div>
+            <div class="project">
+                <h3>Cloud Infrastructure Automation</h3>
+                <p>Developed infrastructure as code (IaC) using Terraform to provision scalable AWS resources.</p>
+            </div>
+        </div>
     </section>
     
-    <section id="projects">
-        <h2>Projects</h2>
-        <h3>Scalable AWS DevOps Pipeline for Microservices</h3>
-        <p>Built a CI/CD pipeline using Jenkins & GitHub Actions for automated deployment on AWS EKS.</p>
-        
-        <h3>End-to-End MLOps Pipeline for AI Deployment</h3>
-        <p>Automated ML model training and deployment with SageMaker, Kubeflow & MLflow.</p>
-        
-        <h3>Serverless Data Pipeline</h3>
-        <p>Developed a serverless pipeline using AWS Lambda, S3, Kinesis & DynamoDB.</p>
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>Email: <a href="mailto:your-email@gmail.com" style="color:#00ffcc;">your-email@gmail.com</a></p>
+            <p>Phone: +91 XXXXXXXXXX</p>
+            <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank" style="color:#00ffcc;">linkedin.com/in/yourprofile</a></p>
+            <p>GitHub: <a href="https://github.com/yourgithub" target="_blank" style="color:#00ffcc;">github.com/yourgithub</a></p>
+        </div>
     </section>
     
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:vamsi@example.com">vamsi@example.com</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/vamsi" target="_blank">linkedin.com/in/vamsi</a></p>
-        <p>GitHub: <a href="https://github.com/vamsi" target="_blank">github.com/vamsi</a></p>
-    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Vamsi. All Rights Reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
