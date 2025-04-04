@@ -290,10 +290,12 @@
     <section class="contact" id="contact">
         <h2 class="heading">Contact <span>Me</span></h2>
         <div id="contact-form">
-            <form id="emailForm" action="https://formspree.io/f/vamsiveerni1@gmail.com" method="POST">
+            <form id="emailForm" action="https://formspree.io/f/myyqyqdj" method="POST">
+                <input type="hidden" name="_subject" value="New message from your portfolio">
                 <input type="text" name="name" placeholder="Full Name" required style="width:100%;padding:15px;margin:10px 0;background:#050505;border:none;border-radius:8px;color:var(--light)">
-                <input type="email" name="email" placeholder="Email" required style="width:100%;padding:15px;margin:10px 0;background:#050505;border:none;border-radius:8px;color:var(--light)">
+                <input type="email" name="_replyto" placeholder="Email" required style="width:100%;padding:15px;margin:10px 0;background:#050505;border:none;border-radius:8px;color:var(--light)">
                 <textarea name="message" placeholder="Your Message" required style="width:100%;padding:15px;margin:10px 0;background:#050505;border:none;border-radius:8px;color:var(--light);height:150px"></textarea>
+                <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
                 <input type="submit" value="Send Message" class="btn">
             </form>
         </div>
@@ -331,6 +333,11 @@
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
+                // Show loading state
+                const submitBtn = form.querySelector('[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.value = 'Sending...';
+                
                 // Submit the form using Formspree
                 fetch(form.action, {
                     method: 'POST',
@@ -352,14 +359,20 @@
                             form.reset();
                             contactForm.style.display = 'block';
                             thankYou.style.display = 'none';
+                            submitBtn.disabled = false;
+                            submitBtn.value = 'Send Message';
                         }, 3000);
                     } else {
-                        throw new Error('Network response was not ok');
+                        return response.json().then(err => {
+                            throw new Error(err.error || 'Network response was not ok');
+                        });
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('There was a problem sending your message. Please try again later.');
+                    alert(error.message || 'There was a problem sending your message. Please try again later.');
+                    submitBtn.disabled = false;
+                    submitBtn.value = 'Send Message';
                 });
             });
         });
