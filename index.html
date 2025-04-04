@@ -160,6 +160,26 @@
             padding: 30px 10%;
             text-align: center;
         }
+        
+        /* Thank you message styles */
+        .thank-you-message {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 247, 255, 0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .thank-you-message h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.5rem; }
             .about-content { flex-direction: column; }
@@ -269,12 +289,19 @@
     
     <section class="contact" id="contact">
         <h2 class="heading">Contact <span>Me</span></h2>
-        <form>
-            <input type="text" placeholder="Full Name" style="width:100%;padding:15px;margin:10px 0;background:#050505;border:none;border-radius:8px;color:var(--light)">
-            <input type="email" placeholder="Email" style="width:100%;padding:15px;margin:10px 0;background:#050505;border:none;border-radius:8px;color:var(--light)">
-            <textarea placeholder="Your Message" style="width:100%;padding:15px;margin:10px 0;background:#050505;border:none;border-radius:8px;color:var(--light);height:150px"></textarea>
-            <input type="submit" value="Send Message" class="btn">
-        </form>
+        <div id="contact-form">
+            <form id="emailForm" action="https://formspree.io/f/vamsiveerni1@gmail.com" method="POST">
+                <input type="text" name="name" placeholder="Full Name" required style="width:100%;padding:15px;margin:10px 0;background:#050505;border:none;border-radius:8px;color:var(--light)">
+                <input type="email" name="email" placeholder="Email" required style="width:100%;padding:15px;margin:10px 0;background:#050505;border:none;border-radius:8px;color:var(--light)">
+                <textarea name="message" placeholder="Your Message" required style="width:100%;padding:15px;margin:10px 0;background:#050505;border:none;border-radius:8px;color:var(--light);height:150px"></textarea>
+                <input type="submit" value="Send Message" class="btn">
+            </form>
+        </div>
+        <div id="thank-you" class="thank-you-message">
+            <h3>Thank You!</h3>
+            <p>Your message has been sent successfully.</p>
+            <p>Redirecting you back to the top...</p>
+        </div>
     </section>
     
     <footer>
@@ -294,6 +321,46 @@
                 setTimeout(() => {
                     skill.style.width = width;
                 }, 100);
+            });
+
+            // Contact form handling
+            const form = document.getElementById('emailForm');
+            const thankYou = document.getElementById('thank-you');
+            const contactForm = document.getElementById('contact-form');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Submit the form using Formspree
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Show thank you message
+                        contactForm.style.display = 'none';
+                        thankYou.style.display = 'block';
+                        
+                        // Redirect to home after 3 seconds
+                        setTimeout(() => {
+                            window.location.href = '#home';
+                            // Reset form and show it again
+                            form.reset();
+                            contactForm.style.display = 'block';
+                            thankYou.style.display = 'none';
+                        }, 3000);
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was a problem sending your message. Please try again later.');
+                });
             });
         });
     </script>
